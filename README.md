@@ -52,18 +52,17 @@ Or install it yourself as:
     $ gem install baby_kissers
 
 ## Usage
+    require 'baby_kisser'
 
-require 'baby_kisser'
-politicians = BabyKisser.new "http://www.govtrack.us/data/us/112/people.xml"
-politicians.all
+    politicians = BabyKisser.new "http://www.govtrack.us/data/us/112/people.xml"
+    politicians.all
 
 
 ## TODOS
-Add the rest of data at govtrack (in the 'role' part of the xml)
-Add scopes
+* Add the rest of data at govtrack (in the 'role' part of the xml)
+* Add scopes
 
 ## Contributing
-
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Added some feature'`)
