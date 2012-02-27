@@ -4,7 +4,7 @@ require File.expand_path('../lib/baby_kisser/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Jake Schmitz"]
   gem.email         = ["jschmitz@gmail.com"]
-  gem.description   = %q{Convert the xml for politicians at govtrack to a nice array of hashes}
+  gem.description   = %q{Convert the xml for politicians at govtrack to an array of hashes}
   gem.summary       = %q{Make politicians data more accessible via an array of hashes}
   gem.homepage      = ""
 
