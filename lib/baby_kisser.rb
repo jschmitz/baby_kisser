@@ -4,7 +4,7 @@ require 'open-uri'
 
 class BabyKisser
 
-  attr_accessor :src, :document
+  attr_accessor :src, :document, :politicians
 
   def initialize src
     self.src = src
@@ -12,16 +12,23 @@ class BabyKisser
   end
 
   def all
-    politicians = []
-    document.xpath('//person').each do |person|
-      politician = make_politician person
-      politicians << politician
-    end
+    self.politicians ||= all_politicians
+  end
 
-    politicians
+  def twitter_users
+    all.select { |bk| bk if bk.has_key? "twitterid" } 
   end
 
   private
+  def all_politicians
+    all = []
+    document.xpath('//person').each do |person|
+      p = make_politician person
+      all << p
+    end
+    all
+  end
+
   def make_politician person
     p = {} 
     p.merge!(all_xml_attribute_values(person.attributes))

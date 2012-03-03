@@ -36,7 +36,7 @@ describe BabyKisser do
                              }
                            }
 
-  context "Ackerman tests, single person xml" do
+  context "xml subset" do
     before { @baby_kissers = BabyKisser.new(ackerman_xml) }
 
     it 'initializes with the source of politician data' do
@@ -50,6 +50,10 @@ describe BabyKisser do
     it 'has Gary Ackerman loaded' do
       @baby_kissers.all[0].should == ackerman
     end
+
+    it 'provides a list of politicians with twitter screen names' do
+      @baby_kissers.twitter_users.size.should == 1
+    end
   end
 
   context "All local tests, copy of xml file from govtrack" do
@@ -58,12 +62,16 @@ describe BabyKisser do
     it 'has 546 some entries saved for the all politician xml' do
       @baby_kissers.all.size.should == 546
     end
+
+    it 'provides a list of politicians with twitter screen names' do
+      @baby_kissers.twitter_users.size.should == 337
+    end
   end
 
   context "gets politications from the internet" do
     before { @baby_kissers = BabyKisser.new(govtrack_xml) }
 
-    xit 'loads xml data from the internet' do
+    it 'loads xml data from the internet' do
       @baby_kissers.all.size.should == 546
     end
   end
