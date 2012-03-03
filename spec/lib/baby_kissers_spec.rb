@@ -24,47 +24,47 @@ describe BabyKisser do
                                    "title"           => "Rep.",
                                    "state"           => "NY",
                                    "district"        => "5",
-                                   #"role"           => "rep",
-                                   #"startdate"      => "2011-01-05",
-                                   #"enddate"        => "2012-12-31",
-                                   #"party"          => "Democrat",
-                                   #"state"          => "NY",
-                                   #"district"       => "5",
-                                   #"url"            => "http://ackerman.house.gov/",
-                                   #"address"        => "2111 Rayburn House Office Building; 20515-3205",
-                                   #"current"        => "1",
+                                   "type"            => "rep",
+                                   "startdate"       => "2011-01-05",
+                                   "enddate"         => "2012-12-31",
+                                   "party"           => "Democrat",
+                                   "state"           => "NY",
+                                   "district"        => "5",
+                                   "url"             => "http://ackerman.house.gov/",
+                                   "address"         => "2111 Rayburn House Office Building;  20515-3205",
+                                   "current"         => "1",
                              }
                            }
 
   context "Ackerman tests, single person xml" do
-    before { @ph = BabyKisser.new(ackerman_xml) }
+    before { @baby_kissers = BabyKisser.new(ackerman_xml) }
 
     it 'initializes with the source of politician data' do
-      @ph.src.should == 'spec/support/ackerman.xml'
+      @baby_kissers.src.should == 'spec/support/ackerman.xml'
     end
 
     it 'loads xml data' do 
-      @ph.document.should be_a_kind_of(Nokogiri::HTML::Document)
+      @baby_kissers.document.should be_a_kind_of(Nokogiri::HTML::Document)
     end
 
     it 'has Gary Ackerman loaded' do
-      @ph.all[0].should == ackerman
+      @baby_kissers.all[0].should == ackerman
     end
   end
 
   context "All local tests, copy of xml file from govtrack" do
-    before { @ph = BabyKisser.new(all_politician_xml) }
+    before { @baby_kissers = BabyKisser.new(all_politician_xml) }
 
     it 'has 546 some entries saved for the all politician xml' do
-      @ph.all.size.should == 546
+      @baby_kissers.all.size.should == 546
     end
   end
 
   context "gets politications from the internet" do
-    before { @ph = BabyKisser.new(govtrack_xml) }
+    before { @baby_kissers = BabyKisser.new(govtrack_xml) }
 
-    it 'loads xml data from the internet' do
-      @ph.all.size.should == 546
+    xit 'loads xml data from the internet' do
+      @baby_kissers.all.size.should == 546
     end
   end
 

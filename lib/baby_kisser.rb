@@ -24,10 +24,16 @@ class BabyKisser
   private
   def make_politician person
     p = {} 
-    person.attributes.keys.each do |key|
-      p[key] = person.attributes[key].value
+    p.merge!(all_xml_attribute_values(person.attributes))
+    p.merge!(all_xml_attribute_values(person.children[0].attributes))
+  end
+
+  def all_xml_attribute_values data
+    p = {}
+    data.keys.each do |key|
+      p[key] = data[key].value
     end
-    p 
+    p
   end
 
 end
